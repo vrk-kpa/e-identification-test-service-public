@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" metadata-complete="true">
+
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>file:///data00/deploy/log4j.properties</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+
+    <listener>
+        <display-name>log listener</display-name>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <session-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
+    <servlet>
+        <servlet-name>Test service SP</servlet-name>
+        <servlet-class>fi.vm.kapa.identification.testservice.TestServiceAuthenticated</servlet-class>
+        <init-param>
+            <param-name>propertiesLocation</param-name>
+            <param-value>/opt/service-provider/service-provider.properties</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Test service SP</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+</web-app>

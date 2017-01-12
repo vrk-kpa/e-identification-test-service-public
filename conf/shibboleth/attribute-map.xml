@@ -1,0 +1,13 @@
+<Attributes xmlns="urn:mace:shibboleth:2.0:attribute-map" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Attribute name="urn:oid:1.2.246.21" id="nationalIdentificationNumber"/>
+    <Attribute name="urn:oid:2.5.4.4" id="sn"/>
+    <Attribute name="http://eidas.europa.eu/attributes/naturalperson/CurrentGivenName" id="FirstName"/>
+    <Attribute name="http://eidas.europa.eu/attributes/naturalperson/CurrentFamilyName" id="FamilyName"/>
+    <Attribute name="http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier" id="PersonIdentifier"/>
+    <Attribute name="http://eidas.europa.eu/attributes/naturalperson/DateOfBirth" id="DateOfBirth"/>
+    <Attribute name="urn:oid:1.2.246.517.2002.2.4" id="VakinainenKotimainenLahiosoiteS"/>
+    <Attribute name="urn:oid:1.2.246.517.2002.2.5" id="VakinainenKotimainenLahiosoiteR"/>
+    <Attribute name="urn:oid:1.2.246.517.2002.2.6" id="VakinainenKotimainenLahiosoitePostinumero"/>
+    <Attribute name="urn:oid:1.2.246.517.2002.2.7" id="VakinainenKotimainenLahiosoitePostitoimipaikkaS"/>
+    <Attribute name="urn:oid:1.2.246.517.2002.2.8" id="VakinainenKotimainenLahiosoitePostitoimipaikkaR"/>
+</Attributes>

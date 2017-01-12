@@ -1,0 +1,6 @@
+<!-- TOMCAT_HOME/conf/Catalina/localhost/sp.xml -->
+<Context docBase="/opt/service-provider/kapa-service-provider.war"
+         privileged="true"
+         antiResourceLocking="false"
+         unpackWAR="true"
+         swallowOutput="true" />

@@ -1,0 +1,74 @@
+
+/* BODY */
+
+body {
+    margin: 0 auto;
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #111111;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    min-height: 300px;
+
+}
+
+/* HEADER */
+
+.header-bar {
+    margin-bottom: 30px;
+}
+
+.tag-header{
+    padding: 7px;
+}
+
+
+/* FOOTER */
+
+.footer {
+    min-height: 600px;
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px; 
+}
+
+
+.tag-footer {
+    padding: 7px;
+    margin-left: 10px;
+}
+
+
+/* BUTTONS */
+
+.palaa-etusivulle {
+    margin-top: 20px;
+}
+
+
+/* MEDIA QUERIES */
+
+@media (min-width: 34em) {
+  .navbar {
+    border-radius: 0px;
+  }
+}
+
+
+
+/* ALERTS */
+
+.tunnistautunut-alert {
+    margin-bottom: 30px;
+}
+
+/* CARDS */
+.white-card {
+    background-color: #fff;
+    min-height: 350px;
+}
+
+.white-card2 {
+    background-color: #fff;
+}

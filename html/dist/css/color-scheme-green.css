@@ -1,0 +1,86 @@
+/* HEADER NAVBAR */
+.navbar-bg-color {
+  color: #fff;
+  background-color: darkgreen;
+}
+
+/* TITLE LABEL COLOR */
+.label-bg-color {
+  background-color: deepskyblue;
+}
+
+
+/* TYPOGRAPHY */
+
+.header-color {
+    color: darkgreen;
+}
+
+/* BUTTON COLORS */
+
+.btn-primary {
+  color: #fff;
+  background-color: #373a3c;
+  border-color: deepskyblue;
+}
+
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: darkgreen;
+  border-color: darkgreen;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: darkgreen;
+  border-color: darkgreen;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.open > .btn-primary.dropdown-toggle {
+  background-image: none;
+}
+
+/* TABLE ELEMENTS */
+
+
+.thead-inverse th {
+  color: #fff;
+  background-color: #373a3c;
+}
+
+
+/* FOOTER */
+
+.footer-bg-color {
+  color: #eceeef;
+  background-color: #373a3c;
+}
+
+.footer-link{
+    color:#fff;
+  }
+  .footer-link:hover
+  {
+    color:#ffffff;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

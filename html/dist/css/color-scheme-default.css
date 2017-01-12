@@ -1,0 +1,76 @@
+/* HEADER NAVBAR */
+
+.navbar-bg-color {
+  color: #fff;
+  background-color: #0275d8;
+}
+
+/* TITLE LABEL COLOR */
+
+.label-bg-color {
+  background-color: #f0ad4e;
+}
+
+
+/* TYPOGRAPHY */
+
+.header-color {
+    color: #0275d8;
+}
+
+/* BUTTON COLORS */
+
+.btn-primary {
+  color: #fff;
+  background-color: #0275d8;
+  border-color: #0275d8;
+}
+
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #025aa5;
+  border-color: #01549b;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #025aa5;
+  border-color: #01549b;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.open > .btn-primary.dropdown-toggle {
+  background-image: none;
+}
+
+/* TABLE ELEMENTS */
+
+.thead-inverse th {
+  color: #fff;
+  background-color: #373a3c;
+}
+
+
+/* FOOTER */
+
+.footer-bg-color {
+  color: #eceeef;
+  background-color: #373a3c;
+}
+
+.footer-link{
+    color:#fff;
+  }
+  .footer-link:hover
+  {
+    color:#ffffff;
+  }
+
+
+
+

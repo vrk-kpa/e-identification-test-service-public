@@ -1,0 +1,6 @@
+*.iml
+target
+downloads/*
+!downloads/.keep
+.idea
+.vagrant
