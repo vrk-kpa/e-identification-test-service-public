@@ -1,0 +1,39 @@
+- name: Copy Shibboleth config template
+  template: src={{ tempdir }}/shibboleth2.xml.template dest={{ tempdir }}/filled/shibboleth2.xml
+
+- name: Copy sp-setenv.sh
+  template: src={{ tempdir }}/sp-setenv.sh.template dest={{ tempdir }}/filled/sp-setenv.sh
+
+- name: Create dirs
+  shell: mkdir -p {{ tempdir }}/filled/certs {{ tempdir }}/filled/private {{ tempdir }}/filled/sp_metadata
+
+- name: Copy root cert file
+  local_action: copy src={{ conf_root }}/certs/{{ apro_ca_cert }} dest={{ tempdir }}/filled/certs/{{ apro_ca_cert }}
+
+- name: Copy Apache SSL cert file
+  local_action: copy src={{ conf_root }}/certs/{{ host }}/{{ apro_ssl_cert }} dest={{ tempdir }}/filled/certs/{{ apro_ssl_cert }}
+
+- name: Copy Apache SSL key file
+  local_action: copy src={{ conf_root }}/certs/{{ host }}/{{ apro_ssl_key }} dest={{ tempdir }}/filled/private/{{ apro_ssl_key }}
+
+- name: Copy Apache SSL config
+  template: src={{ tempdir }}/default-ssl.conf.template dest={{ tempdir }}/filled/default-ssl.conf
+
+- name: Copy Shibboleth metadata cert
+  local_action: copy src={{ conf_root }}/certs/{{ shibgen_sp_id }}/sp-signing.crt dest={{ tempdir }}/filled/sp_metadata/{{ sp_cert }}
+
+- name: Copy Shibboleth metadata key
+  local_action: copy src={{ conf_root }}/certs/{{ shibgen_sp_id }}/sp-signing.key dest={{ tempdir }}/filled/sp_metadata/{{ sp_key }}
+
+- name: Copy Service Provider properties
+  template: src={{ tempdir }}/service-provider.properties.template dest={{ tempdir }}/filled/service-provider.properties
+
+- name: Copy log4j.properties
+  template: src={{ tempdir }}/log4j.properties.template dest={{ tempdir }}/filled/log4j.properties
+
+- name: Copy idp metadata
+  local_action: copy src={{ conf_root }}/certs/{{ shibgen_core_idp_id }}/idp-metadata.xml dest={{ tempdir }}/filled/service-idp-metadata.xml
+
+- name: Create filled template tar
+  local_action: shell tar -C {{ tempdir }}/filled/ -zvcf {{ tempdir }}/filled_templates.tgz .
+  delegate_to: localhost

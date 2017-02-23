@@ -1,0 +1,54 @@
+<IfModule mod_ssl.c>
+        <VirtualHost *:443>
+                #ServerAdmin webmaster@localhost
+                #DocumentRoot /var/www/html
+
+                # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+                # error, crit, alert, emerg.
+                # It is also possible to configure the loglevel for particular
+                # modules, e.g.
+                #LogLevel info ssl:warn
+
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+                SSLEngine on
+                SSLCertificateFile    /etc/ssl/certs/{{ apro_ssl_cert }}
+                SSLCertificateKeyFile /etc/ssl/private/{{ apro_ssl_key }}
+                SSLCertificateChainFile /etc/ssl/certs/{{ apro_ca_cert }}
+                SSLProtocol -all +TLSv1 +TLSv1.1 +TLSv1.2
+                SSLCipherSuite {{ apache_ciphers }}
+                SSLHonorCipherOrder on
+                SSLCompression Off
+
+                UseCanonicalName on
+                ServerName {{sp_apache_server_name}}
+
+                Alias /shibboleth-sp /usr/share/shibboleth
+
+                Alias /virhe /var/www/virhe.html
+                Alias /uloskirjautunut /var/www/uloskirjautunut.html
+
+                <Location /tunnistautunut>
+                        Options +ExecCGI
+                        AuthType shibboleth
+                        ShibRequestSetting requireSession 1
+                        require shib-session
+                        ShibUseHeaders On
+                        ShibUseEnvironment On
+                </Location>
+                ProxyRequests Off
+                <Proxy /tunnistautunut>
+                      Order deny,allow
+                      Deny from all
+                      Allow from localhost
+                </Proxy>
+                ProxyPass       /tunnistautunut ajp://localhost:8009/sp/saml
+                ProxyPassReverse    /tunnistautunut ajp://localhost:8009/sp/saml
+
+                ProxyErrorOverride on
+
+        </VirtualHost>
+</IfModule>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
