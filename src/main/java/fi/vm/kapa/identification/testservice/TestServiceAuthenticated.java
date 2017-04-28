@@ -35,6 +35,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,6 +62,7 @@ public class TestServiceAuthenticated extends HttpServlet {
         putIfNotBlank(values, "KAPA_KATU", convertASCIItoUTF8(request.getHeader("VakinainenKotimainenLahiosoiteS")));
         putIfNotBlank(values, "KAPA_POSTINUMERO", convertASCIItoUTF8(request.getHeader("VakinainenKotimainenLahiosoitePostinumero")));
         putIfNotBlank(values, "KAPA_PTP", convertASCIItoUTF8(request.getHeader("VakinainenKotimainenLahiosoitePostitoimipaikkaS")));
+        putIfNotBlank(values, "KAPA_TOKEN", convertASCIItoUTF8(request.getHeader("authenticationToken")));
 
         Template output = cfg.getTemplate("tunnistautunut.ftlh");
 
@@ -78,7 +80,7 @@ public class TestServiceAuthenticated extends HttpServlet {
     }
 
     private void putIfNotBlank(Map<String,String> map, String key, String value) {
-        if (value != null && !value.isEmpty()) {
+        if (StringUtils.isNotBlank(value)) {
             map.put(key, value);
         }
     }
@@ -90,16 +92,13 @@ public class TestServiceAuthenticated extends HttpServlet {
     // http://tomcat.apache.org/tomcat-7.0-doc/config/ajp.html#Common_Attribute
     //
     // Converts ASCII (ISO-8859-1) string to UTF-8.
-    private String convertASCIItoUTF8(String value) throws UnsupportedEncodingException
+    private String convertASCIItoUTF8(String value)
     {
         if (value == null || value.isEmpty()) return value;
         try {
             return new String(value.getBytes("ISO-8859-1"), "UTF-8");
         }
         catch (UnsupportedEncodingException e) {
-            throw e;
-        }
-        catch (Exception e) {
             logger.error("Caught exception "+e.getClass().getName()+" while converting string: "+value);
             return null;
         }

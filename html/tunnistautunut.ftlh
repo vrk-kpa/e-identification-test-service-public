@@ -69,20 +69,31 @@
                                       <td width="70%">${KAPA_DATE_OF_BIRTH}</td>
                                   </tr>
                                   </#if>
+                                  <#if KAPA_ETUNIMET??>
                                   <tr>
                                       <td><strong>Etunimet</strong></td>
                                       <td>${KAPA_ETUNIMET}</td>
                                     </tr>
+                                  </#if>
                                   <#if KAPA_SUKUNIMI??>
                                     <tr>
                                       <td><strong>Sukunimi</strong></td>
                                       <td>${KAPA_SUKUNIMI}</td>
                                     </tr>
                                   </#if>
-                                  <#if KAPA_FAMILY_NAME??>
+                                  <#if KAPA_CN??>
                                     <tr>
-                                      <td><strong>Sukunimi</strong></td>
-                                      <td>${KAPA_FAMILY_NAME}</td>
+                                      <td><strong>Koko nimi</strong></td>
+                                      <td>${KAPA_CN}</td>
+                                    </tr>
+                                  </#if>
+                                  <#if KAPA_TOKEN??>
+                                    <tr>
+                                      <td><strong><span id="token_toggle" style="cursor: pointer;">Token</span></strong></td>
+                                      <td>&#x2714;</td>
+                                    </tr>
+                                    <tr id="kapa_token" style="display: none;">
+                                      <td colspan="2"><span style="font:monospace;">${KAPA_TOKEN}</span></td>
                                     </tr>
                                   </#if>
                                   <thead class="thead-inverse">
@@ -141,12 +152,17 @@
 
 
 
-
-
-
-
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#token_toggle').click(function(){
+          //e.preventDefault();
+          var elem = $('#kapa_token');
+          elem.toggle('fast');
+        });
+      });
+    </script>
   </body>
 </html>

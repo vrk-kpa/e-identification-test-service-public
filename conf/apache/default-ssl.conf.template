@@ -28,25 +28,18 @@
 
                 Alias /virhe /var/www/virhe.html
                 Alias /uloskirjautunut /var/www/uloskirjautunut.html
+                ProxyRequests Off
+                ProxyErrorOverride on
 
                 <Location /tunnistautunut>
-                        Options +ExecCGI
+                        #Options +ExecCGI
                         AuthType shibboleth
                         ShibRequestSetting requireSession 1
                         require shib-session
                         ShibUseHeaders On
                         ShibUseEnvironment On
+                        ProxyPass ajp://localhost:8009/sp/saml
                 </Location>
-                ProxyRequests Off
-                <Proxy /tunnistautunut>
-                      Order deny,allow
-                      Deny from all
-                      Allow from localhost
-                </Proxy>
-                ProxyPass       /tunnistautunut ajp://localhost:8009/sp/saml
-                ProxyPassReverse    /tunnistautunut ajp://localhost:8009/sp/saml
-
-                ProxyErrorOverride on
 
         </VirtualHost>
 </IfModule>
