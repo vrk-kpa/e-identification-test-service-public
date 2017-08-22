@@ -25,7 +25,7 @@
     <!-- HEADER BAR-->
       <nav class="navbar navbar-full navbar-dark navbar-bg-color header-bar">
         <div class="container">
-          <a class="navbar-brand" href="#">SUOMI.FI-TUNNISTAMINEN</a>
+          <a class="navbar-brand" href="#">SUOMI.FI-TUNNISTUS</a>
           <a class="navbar-brand" href="#"><span class="tag label-bg-color tag-header">TESTIPALVELU</span></a>
         </div>
       </nav>
@@ -39,7 +39,7 @@
               <strong><i class="fa fa-check" aria-hidden="true"></i> Olet kirjautunut testipalveluun!</strong>
           </div>
 
-          <h3 class="card-title header-color"> Suomi.fi-tunnistamisen välittämät tiedot käyttäjästä</h3>
+          <h3 class="card-title header-color"> Suomi.fi-tunnistuksen välittämät tiedot käyttäjästä</h3>
 
                         <div class="table-responsive">
 
@@ -135,9 +135,9 @@
 
           <div class="row">
               <div class="col-md-6">
-                <p><strong>SUOMI.FI-TUNNISTAMINEN</strong>
+                <p><strong>SUOMI.FI-TUNNISTUS</strong>
                   <span class="tag label-bg-color tag-footer">TESTIPALVELU</span></p>
-                <p>Tämä on testipalvelu, jonka avulla voit testata Suomi.fi-tunnistamisen kertakirjautumista ja kertauloskirjautumista oman asiointipalvelusi testiympäristön kanssa.</p>
+                <p>Tämä on testipalvelu, jonka avulla voit testata Suomi.fi-tunnistuksen kertakirjautumista ja kertauloskirjautumista oman asiointipalvelusi testiympäristön kanssa.</p>
               </div>
               <div class="col-md-6">
                   <p><strong>PALVELUNTARJOAJA</strong><br>
