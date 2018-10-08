@@ -71,8 +71,8 @@ fi
 cd ${SCRIPTPATH}/..
 
 # Pull the base image
-docker pull dev-docker-registry.kapa.ware.fi/e-identification-tomcat-apache2-shibd-sp-base-image:${TARGET_ENV}
-IMAGE_NAME=dev-docker-registry.kapa.ware.fi/e-identification-test-service:${TARGET_ENV}
+docker pull e-identification-docker-virtual.vrk-artifactory-01.eden.csc.fi/e-identification-tomcat-apache2-shibd-sp-base-image
+IMAGE_NAME=e-identification-docker-virtual.vrk-artifactory-01.eden.csc.fi/e-identification-test-service:${TARGET_ENV}
 
 #build, tag and push docker image
 

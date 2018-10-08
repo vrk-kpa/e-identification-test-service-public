@@ -1,5 +1,5 @@
 # Pull base image
-FROM dev-docker-registry.kapa.ware.fi/e-identification-tomcat-apache2-shibd-sp-base-image
+FROM e-identification-docker-virtual.vrk-artifactory-01.eden.csc.fi/e-identification-tomcat-apache2-shibd-sp-base-image
 COPY target/site /site
 
 COPY conf/shibboleth/attribute-map.xml /etc/shibboleth/attribute-map.xml
@@ -15,9 +15,7 @@ COPY conf/tomcat/server.xml /usr/share/tomcat/conf/
 COPY conf/tomcat/logging.properties /usr/share/tomcat/conf/logging.properties
 COPY conf/apache/envvars /etc/apache2/envvars
 COPY conf/shibboleth/shibd.logger /etc/shibboleth/shibd.logger
-COPY html/*.html /var/www/
 COPY html/dist /var/www/dist
-COPY html/tunnistautunut.ftlh /opt/templates/
 
 # Templates
 COPY conf/shibboleth/shibboleth2.xml.template /data00/templates/store/
@@ -26,6 +24,7 @@ COPY conf/tomcat/service-provider.properties.template /data00/templates/store/
 COPY conf/shibboleth/sp-setenv.sh.template /data00/templates/store/
 COPY conf/logging/log4j.properties.template /data00/templates/store/
 COPY conf/ansible /data00/templates/store/ansible
+COPY conf/dist/* /data00/templates/store/
 
 RUN \
     chown -R tomcat:tomcat /opt/service-provider && \
@@ -48,6 +47,9 @@ RUN ln -sf /data00/deploy/shibboleth2.xml /etc/shibboleth/shibboleth2.xml
 RUN ln -sf /data00/deploy/sp-setenv.sh /usr/share/tomcat/bin/setenv.sh
 RUN ln -sf /data00/deploy/kapa-ca /opt/kapa-ca
 RUN ln -sf /data00/deploy/tomcat_keystore /usr/share/tomcat/properties/tomcat_keystore
+RUN ln -sf /data00/deploy/index.html /var/www/index.html
+RUN ln -sf /data00/deploy/uloskirjautunut.html /var/www/uloskirjautunut.html
+RUN ln -sf /data00/deploy/virhe.html /var/www/virhe.html
 
 CMD \
     mkdir -p /data00/logs && \
@@ -57,5 +59,6 @@ CMD \
     ln -sf /data00/deploy/private/* /etc/ssl/private/ && \
     ln -sf /data00/deploy/sp_metadata/* /etc/shibboleth/ && \
     ln -sf /data00/deploy/service-idp-metadata.xml /etc/shibboleth/idp-metadata/ && \
+    cp -pf /data00/deploy/tunnistautunut.ftlh /opt/templates/tunnistautunut.ftlh && \
     service apache2 restart && service shibd restart && \
     service tomcat restart && tail -f /etc/hosts

@@ -13,15 +13,14 @@
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/bootstrap.min.css.map">
     <link rel="stylesheet" href="dist/css/custom.css">
-    <link rel="stylesheet" href="dist/css/color-scheme-default.css">
-    <!-- <link rel="stylesheet" href="dist/css/color-scheme-green.css"> -->
+    <link rel="stylesheet" href="dist/css/color-scheme-{{test_service_css | default('blue')}}.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 </head>
   <body>
-
+    
     <!-- HEADER BAR-->
       <nav class="navbar navbar-full navbar-dark navbar-bg-color header-bar">
         <div class="container">
@@ -30,24 +29,28 @@
         </div>
       </nav>
 
+    
     <div class="container container-content">
 
-        <div class="alert alert-danger" role="alert">
+      
+        <div class="card card-block white-card">
+          <h3 class="card-title header-color">Tämä on Suomi.fi-tunnistuksen testipalvelu</h3>
+            <p>Testipalvelun avulla testaat Suomi.fi-tunnistuksen kertakirjautumista ja kertauloskirjautumista oman asiointipalvelusi testiympäristön kanssa.</p>
+                
+            <p>Aloita testaus tunnistautumalla.</p>
+              
+            <a class="btn btn-primary btn-lg" href="/Shibboleth.sso/LoginFI?target=/tunnistautunut" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> Tunnistaudu</a>
+        </div>
 
-          <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Tunnistautuminen ei onnistunut!</h4>
-
-
-          <a class="btn btn-primary btn-lg palaa-etusivulle" href="/" role="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Palaa etusivulle</a>
-      </div>
-
-
+      
+      
     </div> <!-- .CONTAINER -->
-
-
+    
+    
     <!-- FOOTER -->
       <nav class="navbar navbar-full navbar-dark footer-bg-color footer">
         <div class="container">
-
+          
           <div class="row">
               <div class="col-md-6">
                 <p><strong>SUOMI.FI-TUNNISTUS</strong>
@@ -65,10 +68,11 @@
         </div>
       </nav>
 
+  
 
-
-
-
+    
+    
+    
 
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

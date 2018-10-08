@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/bootstrap.min.css.map">
     <link rel="stylesheet" href="dist/css/custom.css">
-    <link rel="stylesheet" href="dist/css/color-scheme-default.css">
-    <!-- <link rel="stylesheet" href="dist/css/color-scheme-green.css"> -->
+    <link rel="stylesheet" href="dist/css/color-scheme-{{test_service_css | default('blue')}}.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -123,6 +122,7 @@
 
         <div class="card card-block white-card2">
             <a class="btn btn-primary btn-lg" href="/Shibboleth.sso/Logout?return=/uloskirjautunut" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> Kirjaudu ulos palvelusta</a>
+            <a class="btn btn-primary btn-lg" href="/Shibboleth.sso/Session" role="button"><i class="fa fa-info-circle" aria-hidden="true"></i> Istunnon tiedot</a>
         </div>
 
 

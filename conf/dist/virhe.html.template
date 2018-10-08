@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/bootstrap.min.css.map">
     <link rel="stylesheet" href="dist/css/custom.css">
-    <link rel="stylesheet" href="dist/css/color-scheme-default.css">
-    <!-- <link rel="stylesheet" href="dist/css/color-scheme-green.css"> -->
+    <link rel="stylesheet" href="dist/css/color-scheme-{{test_service_css | default('blue')}}.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -30,22 +29,15 @@
         </div>
       </nav>
 
-
     <div class="container container-content">
 
+        <div class="alert alert-danger" role="alert">
 
-        <div class="card card-block white-card">
-
-          <div class="alert alert-success" role="alert">
-            <strong><i class="fa fa-check" aria-hidden="true"></i> Kirjauduit ulos testipalvelusta!</strong>
-          </div>
-
-          <a class="btn btn-primary btn-lg" href="/" role="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Palaa etusivulle</a>
+          <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Tunnistautuminen ei onnistunut!</h4>
 
 
-
-        </div>
-
+          <a class="btn btn-primary btn-lg palaa-etusivulle" href="/" role="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Palaa etusivulle</a>
+      </div>
 
 
     </div> <!-- .CONTAINER -->
@@ -71,7 +63,6 @@
             </div>
         </div>
       </nav>
-
 
 
 

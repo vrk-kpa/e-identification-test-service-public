@@ -33,6 +33,16 @@
             <Handler type="DiscoveryFeed" Location="/DiscoFeed"/>
 
             <!-- Default initiator for test service (and this is used on the "welcome" page..) -->
+
+            <SessionInitiator type="SAML2" isDefault="true" id="Login" Location="/Login"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="Login" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
             <SessionInitiator type="SAML2" isDefault="true" id="LoginFI" Location="/LoginFI"
               entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
               target="https://{{ spconf_host }}/Shibboleth.sso/Session"
@@ -45,7 +55,533 @@
                 </samlp:AuthnRequest>
             </SessionInitiator>
 
-<!-- BEGIN generated initiators for testing -->
+            <SessionInitiator type="SAML2" isDefault="true" id="LoginSV" Location="/LoginSV"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginSV" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>sv</LG></vetuma>
+                    </samlp:Extensions>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="true" id="LoginEN" Location="/LoginEN"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginEN" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>en</LG></vetuma>
+                    </samlp:Extensions>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+
+            <!-- Initiators for LoA testing -->
+
+            <!-- DEFAULT LANG -->
+
+            <SessionInitiator type="SAML2" isDefault="false" id="Login_LOA2" Location="/Login_LOA2"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="Login_LOA2" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="Login_LOA2min" Location="/Login_LOA2min"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="minimum">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="Login_LOA2min" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="Login_LOA3" Location="/Login_LOA3"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="Login_LOA3" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="Login_LOA23" Location="/Login_LOA23"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="Login_LOA23" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="Login_LOA32" Location="/Login_LOA32"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="Login_LOA32" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="Login_LOA3KATSO" Location="/Login_LOA3KATSO"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="Login_LOA3KATSO" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.5</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.6</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="Login_LOA2MPASS" Location="/Login_LOA2MPASS"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="Login_LOA2MPASS" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.11</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="Login_KATSOLOA32" Location="/Login_KATSOLOA32"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="Login_KATSOLOA32" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.5</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.6</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+
+            <!-- FINNISH -->
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginFI_LOA2" Location="/LoginFI_LOA2"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginFI_LOA2" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>fi</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+           <SessionInitiator type="SAML2" isDefault="false" id="LoginFI_LOA2min" Location="/LoginFI_LOA2min"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="minimum">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginFI_LOA2min" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>fi</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginFI_LOA3" Location="/LoginFI_LOA3"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginFI_LOA3" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>fi</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginFI_LOA23" Location="/LoginFI_LOA23"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginFI_LOA23" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>fi</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginFI_LOA32" Location="/LoginFI_LOA32"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginFI_LOA32" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>fi</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginFI_LOA3KATSO" Location="/LoginFI_LOA3KATSO"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginFI_LOA3KATSO" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>fi</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.5</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.6</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginFI_LOA2MPASS" Location="/LoginFI_LOA2MPASS"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginFI_LOA2MPASS" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>fi</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.11</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginFI_KATSOLOA32" Location="/LoginFI_KATSOLOA32"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginFI_KATSOLOA32" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>fi</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.5</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.6</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <!-- SWEDISH -->
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginSV_LOA2" Location="/LoginSV_LOA2"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginSV_LOA2" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>sv</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginSV_LOA2min" Location="/LoginSV_LOA2min"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="minimum">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginSV_LOA2min" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>sv</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginSV_LOA3" Location="/LoginSV_LOA3"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginSV_LOA3" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>sv</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginSV_LOA23" Location="/LoginSV_LOA23"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginSV_LOA23" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>sv</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginSV_LOA32" Location="/LoginSV_LOA32"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginSV_LOA32" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>sv</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginSV_LOA3KATSO" Location="/LoginSV_LOA3KATSO"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginSV_LOA3KATSO" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>sv</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.5</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.6</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginSV_LOA2MPASS" Location="/LoginSV_LOA2MPASS"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginSV_LOA2MPASS" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>sv</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.11</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginSV_KATSOLOA32" Location="/LoginSV_KATSOLOA32"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginSV_KATSOLOA32" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>sv</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.5</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.6</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+
+            <!-- ENGLISH -->
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginEN_LOA2" Location="/LoginEN_LOA2"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginEN_LOA2" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>en</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginEN_LOA2min" Location="/LoginEN_LOA2min"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="minimum">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginEN_LOA2min" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>en</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginEN_LOA3" Location="/LoginEN_LOA3"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginEN_LOA3" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>en</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginEN_LOA23" Location="/LoginEN_LOA23"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginEN_LOA23" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>en</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginEN_LOA32" Location="/LoginEN_LOA32"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginEN_LOA32" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>en</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginEN_LOA3KATSO" Location="/LoginEN_LOA3KATSO"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginEN_LOA3KATSO" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>en</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.5</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.6</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginEN_LOA2MPASS" Location="/LoginEN_LOA2MPASS"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginEN_LOA2MPASS" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>en</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.11</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="false" id="LoginEN_KATSOLOA32" Location="/LoginEN_KATSOLOA32"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginEN_KATSOLOA32" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>en</LG></vetuma>
+                    </samlp:Extensions>
+                    <samlp:RequestedAuthnContext xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.5</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>urn:oid:1.2.246.517.3002.110.6</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa3</saml:AuthnContextClassRef>
+                               <saml:AuthnContextClassRef>http://ftn.ficora.fi/2017/loa2</saml:AuthnContextClassRef>
+                    </samlp:RequestedAuthnContext>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+
+<!-- BEGIN old generated initiators for testing -->
 
 <SessionInitiator type="SAML2" isDefault="false" id="{{ login_id_prefix }}PWD" Location="/{{ login_id_prefix }}PWD"
   entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"

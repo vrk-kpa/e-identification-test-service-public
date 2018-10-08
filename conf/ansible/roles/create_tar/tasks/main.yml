@@ -31,6 +31,18 @@
 - name: Copy log4j.properties
   template: src={{ tempdir }}/log4j.properties.template dest={{ tempdir }}/filled/log4j.properties
 
+- name: Copy html / index
+  template: src={{ tempdir }}/index.html.template dest={{ tempdir }}/filled/index.html
+
+- name: Copy html / virhe
+  template: src={{ tempdir }}/virhe.html.template dest={{ tempdir }}/filled/virhe.html
+
+- name: Copy html / uloskirjautunut
+  template: src={{ tempdir }}/uloskirjautunut.html.template dest={{ tempdir }}/filled/uloskirjautunut.html
+
+- name: Copy freemarker template / tunnistautunut
+  template: src={{ tempdir }}/tunnistautunut.ftlh.template dest={{ tempdir }}/filled/tunnistautunut.ftlh
+
 - name: Copy idp metadata
   local_action: copy src={{ conf_root }}/certs/{{ shibgen_core_idp_id }}/idp-metadata.xml dest={{ tempdir }}/filled/service-idp-metadata.xml
 
