@@ -5,16 +5,22 @@
   template: src={{ tempdir }}/sp-setenv.sh.template dest={{ tempdir }}/filled/sp-setenv.sh
 
 - name: Create dirs
-  shell: mkdir -p {{ tempdir }}/filled/certs {{ tempdir }}/filled/private {{ tempdir }}/filled/sp_metadata
+  shell: mkdir -p {{ tempdir }}/filled/certs {{ tempdir }}/filled/sp_metadata
 
+#local/test only
 - name: Copy root cert file
-  local_action: copy src={{ conf_root }}/certs/{{ apro_ca_cert }} dest={{ tempdir }}/filled/certs/{{ apro_ca_cert }}
+  local_action: copy src={{ conf_root }}/certs/{{ testsp_ca_cert }} dest={{ tempdir }}/filled/certs/{{ testsp_ca_cert }}
+  when: env == "local" or env == "test"
 
+#local/test only
 - name: Copy Apache SSL cert file
-  local_action: copy src={{ conf_root }}/certs/{{ host }}/{{ apro_ssl_cert }} dest={{ tempdir }}/filled/certs/{{ apro_ssl_cert }}
+  local_action: copy src={{ conf_root }}/certs/{{ host }}/{{ testsp_ssl_cert }} dest={{ tempdir }}/filled/certs/{{ testsp_ssl_cert }}
+  when: env == "local" or env == "test"
 
+#local/test only
 - name: Copy Apache SSL key file
-  local_action: copy src={{ conf_root }}/certs/{{ host }}/{{ apro_ssl_key }} dest={{ tempdir }}/filled/private/{{ apro_ssl_key }}
+  local_action: copy src={{ conf_root }}/certs/{{ host }}/{{ testsp_ssl_key }} dest={{ tempdir }}/filled/certs/{{ testsp_ssl_key }}
+  when: env == "local" or env == "test"
 
 - name: Copy Apache SSL config
   template: src={{ tempdir }}/default-ssl.conf.template dest={{ tempdir }}/filled/default-ssl.conf

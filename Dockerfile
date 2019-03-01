@@ -55,8 +55,6 @@ CMD \
     mkdir -p /data00/logs && \
     chown -R tomcat:tomcat /data00/deploy && \
     chmod -R 777 /data00/logs && \
-    ln -sf /data00/deploy/certs/* /etc/ssl/certs/ && \
-    ln -sf /data00/deploy/private/* /etc/ssl/private/ && \
     ln -sf /data00/deploy/sp_metadata/* /etc/shibboleth/ && \
     ln -sf /data00/deploy/service-idp-metadata.xml /etc/shibboleth/idp-metadata/ && \
     cp -pf /data00/deploy/tunnistautunut.ftlh /opt/templates/tunnistautunut.ftlh && \
