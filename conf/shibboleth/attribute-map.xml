@@ -2,6 +2,7 @@
     <Attribute name="urn:oid:1.2.246.21" id="nationalIdentificationNumber"/>
     <Attribute name="urn:oid:1.2.246.517.3002.111.5" id="authenticationToken"/>
     <Attribute name="urn:oid:2.5.4.4" id="sn"/>
+    <Attribute name="urn:oid:1.2.246.517.3002.111.17" id="foreignPersonidentifier"/>
     <Attribute name="http://eidas.europa.eu/attributes/naturalperson/CurrentGivenName" id="FirstName"/>
     <Attribute name="http://eidas.europa.eu/attributes/naturalperson/CurrentFamilyName" id="FamilyName"/>
     <Attribute name="http://eidas.europa.eu/attributes/naturalperson/PersonIdentifier" id="PersonIdentifier"/>

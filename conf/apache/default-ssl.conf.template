@@ -16,7 +16,7 @@
                 SSLCertificateFile    /etc/ssl/certs/{{ testsp_ssl_cert }}
                 SSLCertificateKeyFile /etc/ssl/certs/{{ testsp_ssl_key }}
                 SSLCertificateChainFile /etc/ssl/certs/{{ testsp_ca_cert }}
-                SSLProtocol -all +TLSv1 +TLSv1.1 +TLSv1.2
+                SSLProtocol +TLSv1.2
                 SSLCipherSuite {{ apache_ciphers }}
                 SSLHonorCipherOrder on
                 SSLCompression Off

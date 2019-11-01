@@ -4,3 +4,6 @@ downloads/*
 !downloads/.keep
 .idea
 .vagrant
+/.settings/
+/.classpath
+/.project

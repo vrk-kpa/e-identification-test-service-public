@@ -54,6 +54,7 @@ public class TestServiceAuthenticated extends HttpServlet {
 
         Map<String,String> values = new HashMap<>();
         putIfNotBlank(values, "KAPA_HETU", convertASCIItoUTF8(request.getHeader("nationalIdentificationNumber")));
+        putIfNotBlank(values, "KAPA_FOREIGN_PERSON_ID", convertASCIItoUTF8(request.getHeader("foreignPersonIdentifier")));
         putIfNotBlank(values, "KAPA_ETUNIMET", convertASCIItoUTF8(request.getHeader("FirstName")));
         putIfNotBlank(values, "KAPA_SUKUNIMI", convertASCIItoUTF8(request.getHeader("sn")));
         putIfNotBlank(values, "KAPA_PERSON_IDENTIFIER", convertASCIItoUTF8(request.getHeader("PersonIdentifier")));

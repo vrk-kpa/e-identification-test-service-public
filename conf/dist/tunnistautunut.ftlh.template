@@ -58,8 +58,14 @@
                                   </#if>
                                   <#if KAPA_PERSON_IDENTIFIER??>
                                   <tr>
-                                      <td width="30%"><strong>Henkilön tunniste</strong></td>
+                                      <td width="30%"><strong>Henkilön tunniste (eIDAS)</strong></td>
                                       <td width="70%">${KAPA_PERSON_IDENTIFIER}</td>
+                                  </tr>
+                                  </#if>
+                                  <#if KAPA_FOREIGN_PERSON_ID??>
+                                  <tr>
+                                      <td width="30%"><strong>Ulkomaalaisen henkilön tunniste</strong></td>
+                                      <td width="70%">${KAPA_FOREIGN_PERSON_ID}</td>
                                   </tr>
                                   </#if>
                                   <#if KAPA_DATE_OF_BIRTH??>

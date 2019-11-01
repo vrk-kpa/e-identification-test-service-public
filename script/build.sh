@@ -15,6 +15,8 @@ fi
 
 SCRIPTPATH=$(dirname "$SCRIPTFILE")
 
+skip_depcheck="false"
+
 cd ${SCRIPTPATH}/..
 function usage
 {
@@ -27,6 +29,7 @@ function usage
         echo "  -d, --no-deps                           Don't build dependency list"
         echo
         echo "  -ug , --ui-git                          Pull ui from git"
+        echo "  -o, --skip-owasp-dep-check              Skip OWASP Maven dependency check plugin"
 }
 
 while [ "$1" != "" ]; do
@@ -50,6 +53,9 @@ while [ "$1" != "" ]; do
                                 ;;
         -d | --no-deps )        nodeps=1
                                 ;;
+        -o | --skip-owasp-dep-check )
+                                skip_depcheck="true"
+                                ;;
         -h | --help )           usage
                                 exit
                                 ;;
@@ -60,12 +66,13 @@ while [ "$1" != "" ]; do
     shift
 done
 
+MAVEN_DEPCHECK_PARAMS="-Ddependency-check.skip=${skip_depcheck}"
 #build
 if [ "$nodeps" = "1" ]; then
-        mvn clean install
+        mvn clean install ${MAVEN_DEPCHECK_PARAMS}
         mkdir -p target/site
 else
-        mvn clean install project-info-reports:dependencies -Ddependency.locations.enabled=false
+        mvn clean install project-info-reports:dependencies -Ddependency.locations.enabled=false ${MAVEN_DEPCHECK_PARAMS}
 fi
 
 cd ${SCRIPTPATH}/..
