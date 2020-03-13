@@ -38,8 +38,18 @@
             <p>Testipalvelun avulla testaat Suomi.fi-tunnistuksen kertakirjautumista ja kertauloskirjautumista oman asiointipalvelusi testiympäristön kanssa.</p>
                 
             <p>Aloita testaus tunnistautumalla.</p>
-              
+
             <a class="btn btn-primary btn-lg" href="/Shibboleth.sso/LoginFI?target=/tunnistautunut" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> Tunnistaudu</a>
+
+        {% set http_post_and_kete = testsp_show_kete_http_post | default(false) %}
+        {% if http_post_and_kete %}
+
+            <br>
+            <a class="btn btn-primary btn-lg" href="/Shibboleth.sso/LoginPOSTFI?target=/tunnistautunut" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> Tunnistaudu (HTTP-POST)</a>
+            <br>
+            <a class="btn btn-primary btn-lg" href="/Shibboleth.sso/LoginPOSTKETEFI?target=/tunnistautunut" role="button"><i class="fa fa-sign-out" aria-hidden="true"></i> Tunnistaudu (KETE, HTTP-POST)</a>
+
+        {% endif %}
         </div>
 
       

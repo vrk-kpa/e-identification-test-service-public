@@ -4,7 +4,8 @@
     <ApplicationDefaults entityID="{{ entity_id }}"
 			 REMOTE_USER="userid"
 			 signing="true"
-			 signingAlg="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256">
+			 signingAlg="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
+			 digestAlg="http://www.w3.org/2001/04/xmlenc#sha256">
 
         <!-- You should use secure cookies if at all possible.  See cookieProps in this Wiki article. -->
         <!-- https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPSessions -->
@@ -79,6 +80,91 @@
                 </samlp:AuthnRequest>
             </SessionInitiator>
 
+            <!-- HTTP-POST initiators -->
+
+            <SessionInitiator type="SAML2" isDefault="true" id="LoginPOSTFI" Location="/LoginPOSTFI"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              outgoingBindings="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginPOSTFI" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>fi</LG></vetuma>
+                    </samlp:Extensions>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="true" id="LoginPOSTSV" Location="/LoginPOSTSV"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              outgoingBindings="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginPOSTSV" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>sv</LG></vetuma>
+                    </samlp:Extensions>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="true" id="LoginPOSTEN" Location="/LoginPOSTEN"
+              entityID="{{ spconf_service_idp_entityid }}" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              outgoingBindings="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginPOSTEN" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>en</LG></vetuma>
+                    </samlp:Extensions>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <!-- HTTP-POST end -->
+
+            <!-- KETE HTTP-POST initiators -->
+
+            <SessionInitiator type="SAML2" isDefault="true" id="LoginPOSTKETEFI" Location="/LoginPOSTKETEFI"
+              entityID="https://kete.kapa.ware.fi/idp1" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              outgoingBindings="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginPOSTKETEFI" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>fi</LG></vetuma>
+                    </samlp:Extensions>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="true" id="LoginPOSTKETESV" Location="/LoginPOSTKETESV"
+              entityID="https://kete.kapa.ware.fi/idp1" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              outgoingBindings="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginPOSTKETESV" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>sv</LG></vetuma>
+                    </samlp:Extensions>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <SessionInitiator type="SAML2" isDefault="true" id="LoginPOSTKETEEN" Location="/LoginPOSTKETEEN"
+              entityID="https://kete.kapa.ware.fi/idp1" IssuerFormat="urn:oasis:names:tc:SAML:2.0:nameid-format:entity"
+              outgoingBindings="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+              target="https://{{ spconf_host }}/Shibboleth.sso/Session"
+              authnContextComparison="exact">
+                <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="LoginPOSTKETEEN" Version="2.0"
+                                    IssueInstant="2012-01-01T00:00:00Z">
+                    <samlp:Extensions>
+                               <vetuma xmlns="urn:vetuma:SAML:2.0:extensions"><LG>en</LG></vetuma>
+                    </samlp:Extensions>
+                </samlp:AuthnRequest>
+            </SessionInitiator>
+
+            <!-- KETE HTTP-POST initiators end -->
 
             <!-- Initiators for LoA testing -->
 
@@ -4986,6 +5072,9 @@
         <MetadataProvider type="XML" url="{{ spconf_service_idp_metadata_url }}"
                           backingFilePath="/etc/shibboleth/idp-metadata/service-idp-metadata.xml"
                           maxRefreshDelay="1800"/>
+
+        <MetadataProvider type="XML" uri="https://kete.kapa.ware.fi/static/metadata/idp-metadata.xml"
+                          reloadInterval="1800" />
 
         <!-- Attribute and trust options you shouldn't need to change. -->
         <AttributeExtractor type="XML" validate="true" path="attribute-map.xml"/>
